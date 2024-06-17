@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Vertical Navigation Bar Styles */
+      .vertical-nav {
+        width: 200px;
+        list-style-type: none;
+        padding: 0;
+        background-color: rgb(194, 243, 243);
+      }
+
+      .vertical-nav li {
+        padding: 10px;
+        /* border-bottom: 1px solid #ddd; */
+        color: blue;
+      }
+
+      .vertical-nav li:hover {
+        background-color: yellow;
+      }
+
+      /* Horizontal Navigation Bar Styles */
+      .horizontal-nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: gray;
+      }
+
+      .horizontal-nav li {
+        float: left;
+        border-right: 1px solid blue;
+      }
+
+      .horizontal-nav li a {
+        display: block;
+        color: blue;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      .horizontal-nav li a:hover {
+        background-color: #111;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Vertical Navigation Bar -->
+    <ul class="vertical-nav">
+      <li>Home</li>
+      <li>Java</li>
+      <li>CSS</li>
+      <li>HTML</li>
+      <li>Bootstrap</li>
+    </ul>
+
+    <!-- Horizontal Navigation Bar -->
+    <ul class="horizontal-nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#java">Java</a></li>
+      <li><a href="#html">HTML</a></li>
+      <li><a href="#css">CSS</a></li>
+    </ul>
+  </body>
+</html>
