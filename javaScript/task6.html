@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Login</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #fafafa;
+        font-family: Arial, sans-serif;
+      }
+      .login-container {
+        background-color: #fff;
+        border: 1px solid #dbdbdb;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .login-container h1 {
+        font-family: "Instagram-Font", sans-serif;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      .input-group {
+        margin-bottom: 10px;
+        position: relative;
+      }
+      .input-group input {
+        width: calc(100% - 40px);
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #dbdbdb;
+        border-radius: 3px;
+        font-size: 14px;
+      }
+      .input-group i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8e8e8e;
+      }
+      .btn {
+        background-color: #3897f0;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 3px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #3183c8;
+      }
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 12px;
+      }
+      .signup-link {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      .signup-link a {
+        color: #3897f0;
+        text-decoration: none;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Instagram</h1>
+      <form id="loginForm">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" placeholder="Username" required />
+          <div class="error" id="usernameError">Username is required</div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <div class="error" id="passwordError">Password is required</div>
+        </div>
+        <button type="submit" class="btn">Log in</button>
+        <div class="remember-forgot">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+      </form>
+      <div class="signup-link">
+        Don't have an account? <a href="#">Sign up here.</a>
+      </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let isValid = true;
+
+          const username = document.getElementById("username");
+          const password = document.getElementById("password");
+          const usernameError = document.getElementById("usernameError");
+          const passwordError = document.getElementById("passwordError");
+
+          if (username.value === "") {
+            usernameError.style.display = "block";
+            isValid = false;
+          } else {
+            usernameError.style.display = "none";
+          }
+
+          if (password.value === "") {
+            passwordError.style.display = "block";
+            isValid = false;
+          } else {
+            passwordError.style.display = "none";
+          }
+
+          if (isValid) {
+            // Handle successful login here
+            alert("Login successful!");
+            // For example, you could redirect to another page:
+            // window.location.href = 'home.html';
+          }
+        });
+    </script>
+  </body>
+</html>

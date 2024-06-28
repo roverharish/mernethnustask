@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alphabetical Order</title>
+    <script>
+      function alphabetOrder() {
+        // Get the input value
+        const str = document.getElementById("stringInput").value;
+
+        // Convert the string to an array, sort it, and join it back into a string
+        const sortedStr = str.split("").sort().join("");
+
+        // Display the result
+        document.getElementById(
+          "result"
+        ).innerText = `Sorted String: ${sortedStr}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Alphabetical Order</h1>
+    <label for="stringInput">Enter a string:</label>
+    <input type="text" id="stringInput" />
+    <button onclick="alphabetOrder()">Sort</button>
+    <p id="result"></p>
+  </body>
+</html>

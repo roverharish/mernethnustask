@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .error {
+        color: red;
+      }
+      .success {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="registrationForm">
+      <h2>Registration form</h2>
+      <label
+        >First Name: <input type="text" id="firstName" /><span
+          id="firstNameError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Last Name: <input type="text" id="lastName" /><span
+          id="lastNameError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Email: <input type="email" id="email" /><span
+          id="emailError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Password: <input type="password" id="password" /><span
+          id="passwordError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Re-enter Password: <input type="password" id="confirmPassword" /><span
+          id="confirmPasswordError"
+          class="error"
+        >
+          POOR OR MISMATCH</span
+        ></label
+      ><br />
+      <label
+        >Gender:
+        <input type="radio" name="gender" value="male" id="male" /> Male
+        <input type="radio" name="gender" value="female" id="female" /> Female
+        <span id="genderError" class="error"> POOR</span> </label
+      ><br />
+      <label
+        >Age: <input type="number" id="age" /><span id="ageError" class="error">
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Phone Number: <input type="text" id="phoneNumber" /><span
+          id="phoneError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Address: <textarea id="address"></textarea
+        ><span id="addressError" class="error"> POOR</span></label
+      ><br />
+      <label
+        >State: <input type="text" id="state" /><span
+          id="stateError"
+          class="error"
+        >
+          POOR</span
+        ></label
+      ><br />
+      <label
+        >Country:
+        <select id="country">
+          <option value="">Choose your country</option>
+          <!-- Add country options here -->
+        </select>
+        <span id="countryError" class="error"> POOR</span> </label
+      ><br />
+      <label
+        >Languages known: <input type="checkbox" id="english" /> English
+        <input type="checkbox" id="kannada" /> Kannada
+        <input type="checkbox" id="hindi" /> Hindi
+        <input type="checkbox" id="telugu" /> Telugu </label
+      ><br />
+      <label>
+        <input type="checkbox" id="declaration" /> Hereby I declare all the
+        given details are true
+        <span id="declarationError" class="error"> POOR</span> </label
+      ><br />
+      <button type="button" onclick="validateForm()">REGISTER</button>
+    </form>
+
+    <script>
+      function validateForm() {
+        let isValid = true;
+
+        // Validate First Name
+        let firstName = document.getElementById("firstName").value;
+        if (firstName === "") {
+          document.getElementById("firstNameError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("firstNameError").style.display = "none";
+        }
+
+        // Validate Last Name
+        let lastName = document.getElementById("lastName").value;
+        if (lastName === "") {
+          document.getElementById("lastNameError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("lastNameError").style.display = "none";
+        }
+
+        // Validate Email
+        let email = document.getElementById("email").value;
+        if (email === "" || !validateEmail(email)) {
+          document.getElementById("emailError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("emailError").style.display = "none";
+        }
+
+        // Validate Password
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        if (password === "" || password !== confirmPassword) {
+          document.getElementById("passwordError").style.display = "inline";
+          document.getElementById("confirmPasswordError").style.display =
+            "inline";
+          isValid = false;
+        } else {
+          document.getElementById("passwordError").style.display = "none";
+          document.getElementById("confirmPasswordError").style.display =
+            "none";
+        }
+
+        // Validate Gender
+        if (
+          !document.getElementById("male").checked &&
+          !document.getElementById("female").checked
+        ) {
+          document.getElementById("genderError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("genderError").style.display = "none";
+        }
+
+        // Validate Age
+        let age = document.getElementById("age").value;
+        if (age === "" || isNaN(age) || age <= 0) {
+          document.getElementById("ageError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("ageError").style.display = "none";
+        }
+
+        // Validate Phone Number
+        let phoneNumber = document.getElementById("phoneNumber").value;
+        if (
+          phoneNumber === "" ||
+          isNaN(phoneNumber) ||
+          phoneNumber.length !== 10
+        ) {
+          document.getElementById("phoneError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("phoneError").style.display = "none";
+        }
+
+        // Validate Address
+        let address = document.getElementById("address").value;
+        if (address === "") {
+          document.getElementById("addressError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("addressError").style.display = "none";
+        }
+
+        // Validate State
+        let state = document.getElementById("state").value;
+        if (state === "") {
+          document.getElementById("stateError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("stateError").style.display = "none";
+        }
+
+        // Validate Country
+        let country = document.getElementById("country").value;
+        if (country === "") {
+          document.getElementById("countryError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("countryError").style.display = "none";
+        }
+
+        // Validate Declaration
+        if (!document.getElementById("declaration").checked) {
+          document.getElementById("declarationError").style.display = "inline";
+          isValid = false;
+        } else {
+          document.getElementById("declarationError").style.display = "none";
+        }
+
+        if (isValid) {
+          alert("Form Submitted Successfully");
+          document.getElementById("registrationForm").reset();
+        } else {
+          alert("Please fill in all fields correctly.");
+        }
+      }
+
+      function validateEmail(email) {
+        const re =
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+        return re.test(String(email).toLowerCase());
+      }
+    </script>
+  </body>
+</html>

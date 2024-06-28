@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      .error {
+        color: red;
+      }
+      input:invalid,
+      textarea:invalid {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm" action="#">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <span class="error" id="nameError">This field is required</span>
+      <br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <span class="error" id="emailError"
+        >A valid email address is required</span
+      >
+      <br /><br />
+
+      <label for="website">Website:</label>
+      <input type="url" id="website" name="website" required />
+      <span class="error" id="websiteError">A valid URL is required</span>
+      <br /><br />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <span class="error" id="messageError">This field is required</span>
+      <br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          var form = event.target;
+          var name = form.name;
+          var email = form.email;
+          var website = form.website;
+          var message = form.message;
+
+          if (!name.checkValidity()) {
+            document.getElementById("nameError").style.display = "inline";
+          } else {
+            document.getElementById("nameError").style.display = "none";
+          }
+
+          if (!email.checkValidity()) {
+            document.getElementById("emailError").style.display = "inline";
+          } else {
+            document.getElementById("emailError").style.display = "none";
+          }
+
+          if (!website.checkValidity()) {
+            document.getElementById("websiteError").style.display = "inline";
+          } else {
+            document.getElementById("websiteError").style.display = "none";
+          }
+
+          if (!message.checkValidity()) {
+            document.getElementById("messageError").style.display = "inline";
+          } else {
+            document.getElementById("messageError").style.display = "none";
+          }
+
+          if (!form.checkValidity()) {
+            event.preventDefault();
+          }
+        });
+    </script>
+  </body>
+</html>

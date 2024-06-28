@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Animation</title>
+    <style>
+      #train {
+        position: relative;
+        animation: moveTrain 5s linear infinite;
+      }
+      @keyframes moveTrain {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+      .stopped {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="image" src="R.png" alt="image" />
+    <h2>Click the following buttons to handle animation</h2>
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+
+    <script>
+      function startAnimation() {
+        document.getElementById("train").classList.remove("stopped");
+      }
+
+      function stopAnimation() {
+        document.getElementById("train").classList.add("stopped");
+      }
+    </script>
+  </body>
+</html>
